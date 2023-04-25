@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn image_classification.wsgi:application --bind 0.0.0.0:$PORT
+  web: gunicorn derma_deploy.wsgi:application --bind 0.0.0.0:$PORT
