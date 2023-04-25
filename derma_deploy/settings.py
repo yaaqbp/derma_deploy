@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@ma#&nqr_i2ovpk8%)8(wo3_@_7hg)$mu0i0$f8pqeila8j8$h
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1','localhost','derma-detection.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','derma.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://'+ALLOWED_HOSTS[-1]]
 CSRF_COOKIE_SECURE = False
 
