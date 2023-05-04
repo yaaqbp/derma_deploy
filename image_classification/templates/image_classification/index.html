@@ -1,47 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<style>
-body {
-    width: 100% !important; 
-    margin: 0 auto;
-    background-color:DarkGray !important; 
-    text-align: center !important; 
-} 
 
-.grid-container {
-  display: inline-grid;
-}
+{% extends "image_classification/base.html" %}
+{% load template_filters %}
 
+{% block title %}Examine your skin lesions{% endblock %}
 
-</style>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Derma</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-</head>
-<body>
-<div class="grid-container">
-    <h1>Derma</h1>
-    <p>Czy moja zmiana skórna jest niebezpieczna?</p> 
-        <br>Wgrywane zdjęcia nie są zapisywane</p>
-
+{% block content %}
+    <h1>Examine your <span>skin&nbsp;lesions</span></h1>
+    <p>Skin lesions are areas of your skin that are different from the skin around them. Skin lesions are common and are often the result of an injury or damage to your skin, but some have the potential to be cancerous.</p>
+    <h2 class="mobile-hidden">Take and upload an image</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
+        <div class="file">
+            {{ form }}
+            <div class="file-dummy">
+                <div class="file-default">
+                    <svg class="icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26 19V15.5C26 14.3065 25.5259 13.1619 24.682 12.318C23.8381 11.4741 22.6935 11 21.5 11H19.5C19.1022 11 18.7206 10.842 18.4393 10.5607C18.158 10.2794 18 9.89782 18 9.5V7.5C18 6.30653 17.5259 5.16193 16.682 4.31802C15.8381 3.47411 14.6935 3 13.5 3H11M20 19L16 15M16 15L12 19M16 15V23M14 3H7.5C6.672 3 6 3.672 6 4.5V27.5C6 28.328 6.672 29 7.5 29H24.5C25.328 29 26 28.328 26 27.5V15C26 11.8174 24.7357 8.76516 22.4853 6.51472C20.2348 4.26428 17.1826 3 14 3Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="file-title">Click to select an image<span class="mobile-hidden"> or drag it here</span></p>
+                </div>
+                <div class="file-success">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 16L14.6667 18.6667L20 13.3333M28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16C4 9.37258 9.37258 4 16 4C22.6274 4 28 9.37258 28 16Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="file-title">Great, your file is selected</p>
+                </div>
+            </div>
+        </div>
+        <div class="file-submit">
+            <p class="file-privacy">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12.75L11.25 15L15 9.75M12 2.714C9.73574 4.86423 6.72026 6.04357 3.598 6C3.20084 7.20998 2.99898 8.4755 3 9.749C3 15.341 6.824 20.039 12 21.372C17.176 20.04 21 15.342 21 9.75C21 8.44 20.79 7.179 20.402 5.999H20.25C17.054 5.999 14.15 4.751 12 2.714Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Uploaded photos are not saved</span>
+            </p>
+            <button class="button" type="submit">Upload</button>
+        </div>
     </form>
     {% if image_ori is not None %}
-
-        <img src="{{ image_ori }}" alt="image" width="300" >
-        <div class="alert" role="alert">
-            output: <b>{{ output }}</b>
+    <div id="results">
+        <h2>Results</h2>
+        <div class="image" style="background-image: url({{ image_ori }});">
+            <div class="image-box">
+                <img src="{{ image_ori }}" alt="">
+            </div>
+        </div>  
+        {% if output %}
+        <div class="result">
+            <h3>{{ output|get_item:"name" }} <span>87%</span></h3>
+            <div class="result-text result-danger">{{ output|get_item:"danger" }}</div>
+            <div class="result-text result-advice">{{ output|get_item:"advice" }}</div>
+            <p>{{ output|get_item:"desc" }} <a href='/diseases/#{{ output|get_item:"id" }}'>Read more about disease</a></p>  
         </div>
+        <div class="info">
+            This diagnosis may be wrong, it is for reference only. If you notice disturbing skin lesions, contact a dermatologist.
+        </div>
+        {% else %}
+        <ul class="errorlist">
+            <li>No skin lesions were found in the image.</li>
+        </ul>
+        {% endif %}
+    </div>
     {% endif %}
-</div>
-</body>
-</html>
-
+{% endblock %}
+    
+{% block scripts %}
+    <script>
+        const element = document.getElementById('results');
+        if (element) {
+            const newUrl = window.location.href.split('#')[0] + '#results';
+            window.location.href = newUrl;
+            element.scrollIntoView();
+        }
+    </script>
+{% endblock %}

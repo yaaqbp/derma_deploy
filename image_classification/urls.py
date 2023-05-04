@@ -4,10 +4,10 @@ from django.conf.urls.static import static
 
 from . import views
 
-
 app_name = 'image_classification'
 
 urlpatterns = [
-    # two paths: with or without given image
     path('', views.index, name='index'),
+    path('diseases/', views.diseases, name='diseases'),
+    path('about/', views.about, name='about'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

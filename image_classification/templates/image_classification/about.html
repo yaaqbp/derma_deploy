@@ -1,0 +1,12 @@
+{% extends "image_classification/base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+    <h1>About <span>app</span></h1>
+    <p>This web application utilizes computer vision to detect the most likely diagnose for skin lesions. To create it, we used neural networks and a large dataset.</p>
+    <h2>Data</h2>
+    <p>The model was trained using the <a target="_blank" href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T">HAM10000 dataset</a>, a large collection of multi-source dermatoscopic images of common pigmented skin lesions.</p>
+    <h2>Privacy</h2>
+    <p>Your images are never uploaded to an external server. Every image you upload stays on your computer or smartphone.</p>
+{% endblock %}

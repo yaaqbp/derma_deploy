@@ -2,7 +2,7 @@ from torch import load as torch_load
 from torchvision import transforms
 from PIL import Image
 import io
-
+from image_classification.descriptions import descriptions
 
 class clf():
     def __init__(self):
@@ -15,15 +15,7 @@ class clf():
         self.basic_transform = transforms.Compose([transforms.Resize((input_size,input_size)), transforms.ToTensor(),
                                         transforms.Normalize(norm_mean, norm_std)])
     
-        self.lesion_type_dict = {
-            'nv': 'Melanocytic nevi',
-            'mel': 'dermatofibroma',
-            'bkl': 'Benign keratosis-like lesions ',
-            'bcc': 'Basal cell carcinoma',
-            'akiec': 'Actinic keratoses',
-            'vasc': 'Vascular lesions',
-            'df': 'Dermatofibroma'
-        }
+        self.lesion_type_dict = descriptions
 
     def predict(self, image_bytes):
         self.classes = ['akiec', 'bcc', 'bkl', 'df', 'nv', 'vasc','mel']
@@ -31,6 +23,7 @@ class clf():
         tensor_img = self.basic_transform(img).unsqueeze(0)
         outputs = self.model(tensor_img)
         prediction = outputs.max(1, keepdim=True)[1]
-        disease = self.lesion_type_dict.get(self.classes[int(prediction)], 'unknown')
+        disease = self.lesion_type_dict.get(self.classes[int(prediction)], {
+        })
     
         return disease

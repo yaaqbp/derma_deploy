@@ -1,0 +1,84 @@
+{% extends "image_classification/base.html" %}
+{% load static %}
+
+{% block title %}Diseases{% endblock %}
+
+{% block content %}
+    <div class="dict">
+        <h1>Diseases</h1>
+        <ul class="dict-list">
+            <li><a href="#nv">Melanocytic nevi</a></li>
+            <li><a href="#mel">Melanoma</a></li>
+            <li><a href="#bkl">Benign keratosis</a></li>
+            <li><a href="#bcc">Basal cell carcinoma</a></li>
+            <li><a href="#akiec">Actinic keratoses and intraepithelial carcinoma</a></li>
+            <li><a href="#vasc">Vascular lesions</a></li>
+            <li><a href="#df">Dermatofibroma</a></li>
+        </ul>
+        <h2 id="nv">Melanocytic nevi</h2>
+        <div class="desc">benign, may transform into a dangerous cancer</div>
+        <p>Melanocytic nevi are benign neoplasms of melanocytes and appear in a myriad of variants. The variants may differ significantly from a dermatoscopic point of view.</p>
+        <p>Melanocytic nevi, also known as moles, are typically benign and not dangerous. They are clusters of melanocytes, which are the cells responsible for producing pigment in the skin. Most people have a few to several of these moles on their body, and some people have even more.</p>
+        <p>While most melanocytic nevi are not dangerous, there is an increased risk of them transforming into a malignant tumor (melanoma). Some moles may have features that increase the risk of transformation, such as an irregular shape, irregular borders, uneven color, or rapid enlargement. Therefore, it is important to regularly monitor your moles and consult with a dermatologist if you notice any concerning changes.</p>
+        <div class="gallery">
+            <img src="{% static 'images/nv-1.jpg' %}" alt="Melanocytic nevi">
+            <img src="{% static 'images/nv-2.jpg' %}" alt="Melanocytic nevi">
+            <img src="{% static 'images/nv-3.jpg' %}" alt="Melanocytic nevi">
+        </div>
+        <h2 id="mel">Melanoma</h2>
+        <div class="desc">dangerous cancer</div>
+        <p>Melanoma is a type of skin cancer that develops from the pigment-producing cells (melanocytes) in the skin. It is a serious and potentially life-threatening condition if it is not detected and treated early.</p>
+        <p>Melanoma often appears as a dark, irregularly shaped mole or lesion on the skin. It can occur anywhere on the body, including areas not exposed to the sun. The main risk factor for developing melanoma is exposure to ultraviolet (UV) radiation from the sun or tanning beds.</p>
+        <p>The best way to prevent melanoma is to avoid excessive exposure to UV radiation, including wearing protective clothing and sunscreen, and avoiding tanning beds. It is also important to regularly examine your skin for any changes, including changes in the size, shape, or color of moles, or the appearance of new moles or lesions.</p>
+        <div class="gallery">
+            <img src="{% static 'images/mel-1.jpg' %}" alt="Melanocytic nevi">
+            <img src="{% static 'images/mel-2.jpg' %}" alt="Melanocytic nevi">
+            <img src="{% static 'images/mel-3.jpg' %}" alt="Melanocytic nevi">
+        </div>
+        <h2 id="bkl">Benign keratosis</h2>
+        <div class="desc">harmless</div>
+        <p>Benign keratosis (also known as seborrheic keratosis) is a benign, non-cancerous skin condition that is generally not dangerous and does not pose a threat to health. It can be a cosmetic nuisance, especially if it appears in a visible area of the body.</p>
+        <div class="gallery">
+            <img src="{% static 'images/bkl-1.jpg' %}" alt="Melanocytic nevi">
+            <img src="{% static 'images/bkl-2.jpg' %}" alt="Melanocytic nevi">
+            <img src="{% static 'images/bkl-3.jpg' %}" alt="Melanocytic nevi">
+        </div>
+        <h2 id="bcc">Basal cell carcinoma</h2>
+        <div class="desc">potentially dangerous, requires treatment</div>
+        <p>Basal cell carcinoma (BCC) is a type of skin cancer that is generally considered to be less dangerous than other types of skin cancer, such as melanoma. BCC grows slowly and rarely spreads to other parts of the body, and it can often be treated successfully with surgery or other forms of therapy.</p>
+        <p>However, if left untreated, BCC can lead to tissue and bone damage and cause serious health problems. In some cases, it can become disfiguring or even life-threatening.</p>
+        <p>The best way to prevent serious complications from BCC is to detect and treat it early. This can be done through regular skin exams, including monitoring any changes in moles or other skin lesions, and seeking medical attention if there are any concerning symptoms.</p>
+        <div class="gallery">
+            <img src="{% static 'images/bcc-1.jpg' %}" alt="Basal cell carcinoma">
+            <img src="{% static 'images/bcc-2.jpg' %}" alt="Basal cell carcinoma">
+            <img src="{% static 'images/bcc-3.jpg' %}" alt="Basal cell carcinoma">
+        </div>
+        <h2 id=akiec>Actinic keratoses and intraepithelial carcinoma</h2>
+        <div class="desc">potentially dangerous, requires treatment</div>
+        <p>Actinic keratoses (AK) and intraepithelial carcinoma (IEC) are types of precancerous and early-stage skin cancer, respectively. They are both caused by long-term exposure to UV radiation from the sun.</p>
+        <p>While AK and IEC are not typically considered as dangerous as advanced skin cancers such as melanoma, they can still pose a risk if left untreated. AK can progress to become squamous cell carcinoma, a more serious form of skin cancer, and IEC can potentially become invasive squamous cell carcinoma.</p>
+        <div class="gallery">
+            <img src="{% static 'images/akiec-1.jpg' %}" alt="Actinic keratoses and intraepithelial carcinoma">
+            <img src="{% static 'images/akiec-2.jpg' %}" alt="Actinic keratoses and intraepithelial carcinoma">
+            <img src="{% static 'images/akiec-3.jpg' %}" alt="Actinic keratoses and intraepithelial carcinoma">
+        </div>
+        <h2 id="vasc">Vascular lesions</h2>
+        <div class="desc">harmless</div>
+        <p>Vascular skin lesions are abnormal growths of blood vessels in the skin that can appear as red or purple discolorations or as raised bumps or nodules. They include conditions such as cherry angiomas, spider angiomas, and port-wine stains.</p>
+        <p>In general, vascular skin lesions are not considered to be serious or dangerous to health, although they can be unsightly and uncomfortable for some people. In some cases, they may be associated with other health conditions, such as heart disease, and treating these underlying conditions may help reduce the risk of developing vascular skin lesions.</p>
+        <div class="gallery">
+            <img src="{% static 'images/vasc-1.jpg' %}" alt="Vascular lesions">
+            <img src="{% static 'images/vasc-2.jpg' %}" alt="Vascular lesions">
+            <img src="{% static 'images/vasc-3.jpg' %}" alt="Vascular lesions">
+        </div>
+        <h2 id="df">Dermatofibroma</h2>
+        <div class="desc">harmless</div>
+        <p>Dermatofibroma is typically a benign skin growth that does not pose a significant danger to health. It is usually a harmless condition that may be a cosmetic concern or cause discomfort, but it is not typically a cause for alarm.</p>
+        <p>However, in rare cases, dermatofibroma may display atypical or unusual characteristics that may require further evaluation to rule out the possibility of a more serious condition, such as skin cancer. Therefore, it is important to have any suspicious skin growths examined by a dermatologist to determine the appropriate course of action.</p>
+        <div class="gallery">
+            <img src="{% static 'images/df-1.jpg' %}" alt="Dermatofibroma">
+            <img src="{% static 'images/df-2.jpg' %}" alt="Dermatofibroma">
+            <img src="{% static 'images/df-3.jpg' %}" alt="Dermatofibroma">
+        </div>
+    </div>
+{% endblock %}
