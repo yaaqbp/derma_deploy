@@ -26,8 +26,9 @@ class clf():
         outputs = self.model(tensor_img)
         softmax = Softmax(dim=1)
         probabilities = softmax(outputs).data.numpy()[0]
-        prediction = np.argmax(probabilities) if max(probabilities) >0.8 else -1
+        prediction = np.argmax(probabilities) if max(probabilities) >0.7 else -1
         disease = self.lesion_type_dict.get(self.classes[int(prediction)], {
         })
+        if disease: disease['prob'] = int(max(probabilities)*100)
     
         return disease

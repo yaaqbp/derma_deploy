@@ -47,7 +47,7 @@
         </div>  
         {% if output %}
         <div class="result">
-            <h3>{{ output|get_item:"name" }} <span>87%</span></h3>
+            <h3>{{ output|get_item:"name" }} <span>{{ output|get_item:"prob" }}%</span></h3>
             <div class="result-text result-danger">{{ output|get_item:"danger" }}</div>
             <div class="result-text result-advice">{{ output|get_item:"advice" }}</div>
             <p>{{ output|get_item:"desc" }} <a href='/diseases/#{{ output|get_item:"id" }}'>Read more about disease</a></p>  
